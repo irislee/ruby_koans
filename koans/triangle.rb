@@ -15,11 +15,19 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  if a == b && b == c
+
+   s = (a + b + c) / 2.0
+  
+  # the following must be positive to be a valid triangle
+  ok = (s - a) * (s - b) * (s - c)
+  
+  if a <= 0 || b <= 0 || c <= 0 || ok <= 0
+    raise TriangleError
+  elsif a == b && b == c
     :equilateral
   elsif a == b || b == c || a == c
     :isosceles
-  else
+  else a != b && b != c
     :scalene
   end
 end
